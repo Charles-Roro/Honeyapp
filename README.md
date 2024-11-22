@@ -70,7 +70,21 @@ Looks like we were able to connect and install NMAP lets check in the AWS EC2 in
 ![Screenshot 2024-11-22 at 12 34 16 PM](https://github.com/user-attachments/assets/46cee935-0473-485f-9116-eb295ee3b2a4)
 
 Now lets run our GCP ansible playbook!
+![Screenshot 2024-11-22 at 2 15 40 PM](https://github.com/user-attachments/assets/ead1e297-ab59-442d-a211-ccdde8d0741f)
 
+Now lets check or IP address to see if the apache loads. Good the apache page is showing1
+![Screenshot 2024-11-22 at 2 19 21 PM](https://github.com/user-attachments/assets/f0786f1f-e997-4cd7-b878-827d30033680)
+
+Now we will deploy our website.yml
+![Screenshot 2024-11-22 at 2 21 29 PM](https://github.com/user-attachments/assets/b88c7c37-b932-40da-84e6-c23eb6310f43)
+
+Now lets check the url again.
+![Screenshot 2024-11-22 at 2 32 47 PM](https://github.com/user-attachments/assets/13c47fb7-167b-4f29-bfe1-a585d1e9d0e8)
+
+
+Now are website is up and running!
+
+Next will will have the GCP Linux instances send logs to Graylog!
 
 
 

@@ -82,14 +82,18 @@ Now lets check the url again.
 ![Screenshot 2024-11-22 at 2 32 47 PM](https://github.com/user-attachments/assets/13c47fb7-167b-4f29-bfe1-a585d1e9d0e8)
 
 
-Now are website is up and running!
+Now our website is up and running!
 
 Next will will have the GCP Linux instances send logs to Graylog!
 
+Setting up Graylog to recieve logs from GCP
+![Screenshot 2024-11-24 at 4 28 14 PM](https://github.com/user-attachments/assets/24e9d55e-e053-4c86-bc7a-dd81a89a7b2c)
 
-
-
-
+Using the Cloud Console in GCP to install "rsyslog" 
+![Screenshot 2024-11-24 at 4 30 24 PM](https://github.com/user-attachments/assets/c6d05059-b876-4ee6-ba80-107199d99092)
+![Screenshot 2024-11-24 at 4 31 31 PM](https://github.com/user-attachments/assets/90919543-585b-4136-9fef-ef929857bd1b)
+Adding the correct IP of our local Graylog container to send the logs.
+![Screenshot 2024-11-24 at 4 41 31 PM](https://github.com/user-attachments/assets/7100867b-b39a-4986-9863-14c151db5698)
 
 
 

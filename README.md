@@ -1,26 +1,9 @@
 # Honeyapp
-Using AWS, GCP, and Docker to create and monitor a Fake app.
+Using AWS and GCP to create and monitor a Fake app.
 
 First step is to create all the folders and files we will need for the project via the command line.
 
 ![Screenshot 2024-11-22 at 11 29 35 AM](https://github.com/user-attachments/assets/8fc7b738-fa2a-4017-a570-32b890370a7f)
-
-
-We will be using Graylog for this project. I'll add the link to the website for the Open version "[here](https://github.com/Graylog2/docker-compose/blob/main/open-core/docker-compose.yml)" Be sure to follow the guided instructions so there are no issues. They provide the need yaml to get graylog started.
-![Screenshot 2024-11-22 at 11 30 46 AM](https://github.com/user-attachments/assets/7ae5e413-f79c-40bf-b0f0-b80fb56016e5)
-Next we will run the command "docker-compose up -d" in the folder containing our docker-compose.yml and .env files
-![Screenshot 2024-11-22 at 11 50 25 AM](https://github.com/user-attachments/assets/a5e0b224-077a-463e-826b-f0b46806d140)
-![Screenshot 2024-11-22 at 11 50 51 AM](https://github.com/user-attachments/assets/5e6adb93-a018-4e8a-a001-9c73117830d9)
-
-Now lets check our localhost port 9000 to see if it's up and running(If you do this in the cloud whatever ip address you have assigned to the VM you would use that followed by ":9000")
-![Screenshot 2024-11-22 at 11 52 21 AM](https://github.com/user-attachments/assets/d45487a8-6104-48db-8c1a-41c0b590392b)
-
-Now Graylog is up and running we will login.
-![Screenshot 2024-11-22 at 11 55 18 AM](https://github.com/user-attachments/assets/0f6af39c-1958-4cdb-8167-4fb6db736f96)
-
-Now we just follow the instructions for basic set up. Now Graylog is up!
-![Screenshot 2024-11-22 at 12 00 20 PM](https://github.com/user-attachments/assets/8ba3bed4-1ee7-4862-ba56-4d91a2682050)
-
 
 Now setting up the AWS terraform file. 2 IMPORTANT things to remember here are we do NOT want to use the default VPC in AWS and 2 when creating VMs in terraform with AWS you NEED to pay attention to the 
 "AMI ID" for the OS you are using each region I.E 'us-east-1' and/or 'us-east-2' have different "AMI ID's" even if the OS is the same. I'll post a picture below.(The Highlighted section). We need to make sure we have port 22 open in our Security group so we can use ansible to automate the installation of the plugins we need.
@@ -84,16 +67,34 @@ Now lets check the url again.
 
 Now our website is up and running!
 
-Next will will have the GCP Linux instances send logs to Graylog!
+Next we will set up Wazuh via the Deployment Market place.
+![Screenshot 2024-11-26 at 11 28 50 AM](https://github.com/user-attachments/assets/71e1aa70-8d2b-408c-99b3-db31453ffb33)
+There are guided instructions be sure to follow them I'll add the link [Here](https://decyphertek.readthedocs.io/en/latest/products/gcp-wazuh-instructions/)
+![Screenshot 2024-11-26 at 11 31 05 AM](https://github.com/user-attachments/assets/128def68-cec0-455b-aa8e-62fbd033fbad)
+![Screenshot 2024-11-26 at 11 31 18 AM](https://github.com/user-attachments/assets/8795de9a-54b7-4e3c-b92d-96a6e9e10aba)
+Now deployed in GCP
+![Screenshot 2024-11-26 at 11 37 25 AM](https://github.com/user-attachments/assets/3fee06d2-8ee5-4830-9fa6-66b197deba8b)
 
-Setting up Graylog to recieve logs from GCP
-![Screenshot 2024-11-24 at 4 28 14 PM](https://github.com/user-attachments/assets/24e9d55e-e053-4c86-bc7a-dd81a89a7b2c)
+Next we need to wait about 5-15 minutes for the services to start. 
+Then we follow the instructions to set up our agent to put it in our GCP-Linux-Box. Be sure to add the ip address of your Wazuh server.
+![Screenshot 2024-11-26 at 11 49 39 AM](https://github.com/user-attachments/assets/bfde8b38-b806-413f-8829-ce6731817643)
+Next we ssh into our GCP-Linux-Box and run the commands given in Wazuh to install the agent.
+![Screenshot 2024-11-26 at 12 01 12 PM](https://github.com/user-attachments/assets/c437c2c5-0831-4d6e-8617-5cc68af7a3ab)
+Now let's check Wazuh if the agent is active. It is now up and running! Also connected via our internal GCP subnet!
+![Screenshot 2024-11-26 at 12 02 58 PM](https://github.com/user-attachments/assets/f5b5f319-4a23-4b55-ae60-c437c9a80955)
 
-Using the Cloud Console in GCP to install "rsyslog" 
-![Screenshot 2024-11-24 at 4 30 24 PM](https://github.com/user-attachments/assets/c6d05059-b876-4ee6-ba80-107199d99092)
-![Screenshot 2024-11-24 at 4 31 31 PM](https://github.com/user-attachments/assets/90919543-585b-4136-9fef-ef929857bd1b)
-Adding the correct IP of our local Graylog container to send the logs.
-![Screenshot 2024-11-24 at 4 41 31 PM](https://github.com/user-attachments/assets/7100867b-b39a-4986-9863-14c151db5698)
+Our last steps will involve going back to AWS and we will SSH into our instance and run a few NMap scans on our GCP-Linux-Box
+![Screenshot 2024-11-26 at 12 22 02 PM](https://github.com/user-attachments/assets/2ecf8b35-acb8-4701-ae11-9b28bfae3e28)
+![Screenshot 2024-11-26 at 12 37 56 PM](https://github.com/user-attachments/assets/280274e0-7243-43cd-b6a9-33883de03293)
+
+Now we are all finished! You could always run more advanced scans and simulated attacks!
+
+
+
+
+
+
+
 
 
 

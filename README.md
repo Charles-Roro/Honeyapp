@@ -89,6 +89,8 @@ Our last steps will involve going back to AWS and we will SSH into our instance 
 
 Now we are all finished! You could always run more advanced scans and simulated attacks!
 
+Remember to TEAR DOWN any unused resources with Terraform!
+
 
 
 

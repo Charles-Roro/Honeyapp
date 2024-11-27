@@ -1,5 +1,5 @@
 # Honeyapp
-Using AWS and GCP to create and monitor a Fake app.
+Using AWS and GCP to create and monitor a Fake app. Tools we will use: Bash, Cloud Shell, Snyk, Terraform, Ansible, Ubuntu/Debian Linux, NMap, and Wazuh
 
 First step is to create all the folders and files we will need for the project via the command line.
 
